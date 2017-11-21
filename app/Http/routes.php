@@ -15,11 +15,13 @@
 
 Route::auth();
 
-Route::get('/', 'HomeController@index');
-/*Route::get('/', function(){
-	return Member::all();
-});
+/*Route::get('/', 'HomeController@index');
 */
+
+Route::get('/', function(){
+	return view('login');
+});
+
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/', 'HomeController@index');
     Route::resource('article', 'ArticleController');
